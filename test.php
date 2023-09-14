@@ -7,7 +7,7 @@
     <h1>Hello, World!</h1>
     <?php
         // PHP code can go here
-        $message = "Welcome to my PHP website! Test";
+        $message = "Welcome to my PHP website! Second Test";
         echo "<p>$message</p>";
     ?>
 </body>
