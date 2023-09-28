@@ -1,5 +1,7 @@
 <?php
 
+include('api_helper.php');
+
 //----------------Dispatcher----------------
 
 //Set connection parameters
@@ -19,14 +21,16 @@ try {
 
 //Determine which function should be called based off the request method
 if ($_SERVER['REQUEST_METHOD'] === 'REGIS') {
-    regis($con);
+    regisUser($con);
 } else if ($_SERVER['REQUEST_METHOD'] === 'LOGIN') {
-    login($con);
-} //Others, when implemented, will go here as else ifs. Switch statement caused some trouble for whatever reason
+    loginUser($con);
+} else if ($_SERVER['REQUEST_METHOD'] === 'LOAD') {
+    loadContacts($con);
+}
 
 
 //User would like to register an account
-function regis($con) {
+function regisUser($con) {
     //Double checking request method
     if ($_SERVER['REQUEST_METHOD'] === 'REGIS') {
         // Decode the incoming request (php://input is an input stream with raw JSON from the HTTP request body)
@@ -54,32 +58,37 @@ function regis($con) {
         try {
             $stmt->execute();
             $response = ['success' => true];
+            
+            //Terminating query
+            $stmt->close();
+            
+            //Grab the current user's ID
+            $clientID = fetchID($con, $username, $hash);
+            if($clientID > 0) {
 
-            //Begin the session and save some information about the user
-            session_start();
-            $_SESSION['username'] = $username;
-            $_SESSION['firstname'] = $firstname;
-            $_SESSION['lastname'] = $lastname;
-            $_SESSION['email'] = $email;
-            $_SESSION['phone'] = $phone;
+                //Begin the session and save some information about the user
+                session_start();
+                $_SESSION['id'] = $clientID;
+                $_SESSION['username'] = $username;
+                $_SESSION['firstname'] = $firstname;
+                $_SESSION['lastname'] = $lastname;
+                $_SESSION['email'] = $email;
+                $_SESSION['phone'] = $phone;
 
-        //Only exception possible is if username already existed in the database
-        } catch(mysqli_sql_exception) {
-            $response = ['success' => false];
+            } else $response = ['success' => false]; //Returned value was not a valid ID
 
-        }
+
+        //Either the user entered a duplicate username, or there was an issue contacting the database
+        } catch(mysqli_sql_exception) {$response = ['success' => false];}
 
         // Return JSON response
         header("Content-Type: application/json");
         echo json_encode($response);
-
-        //Terminating query
-        $stmt->close();
     }
 }
 
 //User is trying to log in
-function login($con) {
+function loginUser($con) {
     //Double checking request method
     if ($_SERVER['REQUEST_METHOD'] === 'LOGIN') {
         // Decode the incoming request (php://input is an input stream with raw JSON from the HTTP request body)
@@ -108,29 +117,81 @@ function login($con) {
                 //If the provided password matched the password we had on record, user is who they claim to be. Otherwise do not permit them entry to the specified account
                 if(password_verify($password, $hashedP)) {
                     $response = ['success' => true];
-                    //SET SESSION VARIABLE HERE LATER. FETCH FROM DATABASE
 
-                } else {
-                    $response = ['success' => false];
-                }
+                    //Terminating query
+                    $stmt->close();
+
+                    //Grab what information about the user that is already stored 
+                    $userInfo = fetchUserInfo($con, $username, $hashedP);
+                    if(!empty($userInfo)) {
+
+                        //Begin the session and save some information about the user
+                        session_start();
+                        $_SESSION['username'] = $username;
+                        $_SESSION['id'] = $userInfo['id'];
+                        $_SESSION['firstname'] = $userInfo['firstname'];
+                        $_SESSION['lastname'] = $userInfo['lastname'];
+                        $_SESSION['email'] = $userInfo['email'];
+                        $_SESSION['phone'] = $userInfo['phone'];
+
+                    } else $response = ['success' => false]; //Returned array was empty
+
+                } else $response = ['success' => false];
 
             //If nothing was retrieved from the datable, then the user specified did not exist
-            } else {
-                $response = ['success' => false];
-            }
+            } else $response = ['success' => false];
 
 
         //Error communicating with the database
-        } catch(mysqli_sql_exception) {
-            $response = ['success' => false];
-        }
+        } catch(mysqli_sql_exception) {$response = ['success' => false];}
 
         // Return JSON response
         header("Content-Type: application/json");
         echo json_encode($response);
-
-        //Terminating query
-        $stmt->close();
     }
 }
+
+//FrontEnd is requesting a list of the current user's contacts
+function loadContacts($con) {
+    //Double checking request method
+    if ($_SERVER['REQUEST_METHOD'] === 'LOAD') {
+        // Decode the incoming request (php://input is an input stream with raw JSON from the HTTP request body)
+        $requestData = json_decode(file_get_contents("php://input"), true);
+
+        //Pulling data from the json
+        $clientID = $requestData['id'];
+
+        /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in blind_params!*/
+
+        //Safely preform a SELECT query using a prepared statement
+        $stmt = $con->prepare("SELECT * FROM smlcon WHERE (ownerID=?)");
+        //Blind parameters
+        $stmt->bind_param("i", $clientID);
+
+        //Attempt to execute our query
+        try {
+            $stmt->execute();
+            $stmt->bind_result($ownerID, $firstName, $lastName, $email, $phone);
+
+            //Populate an array of arrays with contact information
+            while($stmt->fetch()) {
+                $contacts[] = [
+                    'firstname' => $firstName,
+                    'lastname' => $lastName,
+                    'email' => $email,
+                    'phone' => $phone,
+                ];
+            }
+
+            $response = ['success' => true, 'contacts' => $contacts];
+
+        //Error communicating with the database
+        } catch(mysqli_sql_exception) {$response = ['success' => false];}
+
+        // Return JSON response
+        header("Content-Type: application/json");
+        echo json_encode($response);
+    }
+}
+
 ?>

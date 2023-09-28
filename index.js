@@ -26,7 +26,7 @@ function submitLogin(event) {
         //If the response json echoed a success
         if (data.success) {
             // Redirects to the contacts page
-            window.location.href = "contact.html";
+            window.location.href = "contact.php";
         } else {
             //Print error message in the message div
             document.getElementById("message").innerHTML = '<p>Login failed. Please check your credentials.</p>';
