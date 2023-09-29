@@ -104,7 +104,7 @@ function loginUser($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a SELECT query using a prepared statement
-        $stmt = $con->prepare("SELECT (PasswordHashed) FROM userLogins WHERE (Username=?)");
+        $stmt = $con->prepare("SELECT PasswordHashed FROM userLogins WHERE Username=?");
         //Bind the anonymous parameters
         $stmt->bind_param("s", $username);
 
@@ -115,7 +115,7 @@ function loginUser($con) {
 
             //Check if anything was actually retrieved from the database
             if($result->num_rows > 0) {
-                $hashedP = $result->fetch_assoc()["passwordHashed"]; //Grab the saved password
+                $hashedP = $result->fetch_assoc()["PasswordHashed"]; //Grab the saved password
 
                 //If the provided password matched the password we had on record, user is who they claim to be. Otherwise do not permit them entry to the specified account
                 if(password_verify($password, $hashedP)) {
@@ -167,7 +167,7 @@ function loadContacts($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a SELECT query using a prepared statement
-        $stmt = $con->prepare("SELECT FirstName=?, LastName=?, Email=?, Phone=? FROM userContacts WHERE (ownerID=?)");
+        $stmt = $con->prepare("SELECT * FROM userContacts WHERE (ownerID=?)");
         //Bind the anonymous parameters
         $stmt->bind_param("i", $clientID);
 
@@ -176,7 +176,7 @@ function loadContacts($con) {
             $stmt->execute();
 
             //Bind the query results to the specified variables
-            $stmt->bind_result($firstName, $lastName, $email, $phone);
+            $stmt->bind_result($contactID, $ownerID, $firstName, $lastName, $email, $phone);
 
             //Populate an array of arrays with contact information
             while($stmt->fetch()) {

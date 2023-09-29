@@ -51,7 +51,7 @@ function fetchUserInfo($con, $username, $password) {
         $stmt->execute();
 
         //Bind the query results to the specified variables
-        $stmt->bind_result($clientId, $firstName, $lastName, $username, $email, $phone, $passwordHashed, $dateCreated);
+        $stmt->bind_result($clientId, $firstName, $lastName, $username, $email, $passwordHashed, $phone);
 
         //Populate the array with the retrieved values
         while($stmt->fetch()) {

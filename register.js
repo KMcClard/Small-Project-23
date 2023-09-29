@@ -37,6 +37,7 @@ function submitRegis(event) {
             window.location.href = "contact.php";
         } else {
             //Print error message in the message div
+	    console.error(data.why);
             document.getElementById("message").innerHTML = '<p>Registration failed. Please check the information you provided.</p>';
         }
     })
