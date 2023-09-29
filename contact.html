@@ -55,128 +55,10 @@
 			</div>
 		</div>
 		
-		<div class="row mt-2">
-			<div class="grid">
-				<!-- Row 0, grid headers-->
-				<div class="gridHeader">
-					<label><b>FIRST</b></label>
-				</div>
-				<div class="gridHeader">
-					<label><b>LAST</b></label>
-				</div>
-				<div class="gridHeader">
-					<label><b>PHONE</b></label>
-				</div>
-				<div class="gridHeader">
-					<label><b>EMAIL</b></label>
-				</div>
-				<div class="gridHeader">
-					<!-- empty space -->
-				</div>
-				
-				<!-- Grid spots (row 1) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst1">Apple</label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast1">Sauce</label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone1">8005093345</label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail1">asauce@hotmail.com</label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit1">edit</button>
-				</div>
-				
-				<!-- Grid spots (row 2) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst2"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast2"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone2"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail2"></label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit2">edit</button>
-				</div>
-				
-				<!-- Grid spots (row 3) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst3"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast3"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone3"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail3"></label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit3">edit</button>
-				</div>
-				
-				<!-- Grid spots (row 4) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst4"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast4"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone4"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail4"></label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit4">edit</button>
-				</div>
-				
-				<!-- Grid spots (row 5) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst5"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast5"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone5"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail5"></label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit5">edit</button>
-				</div>
-				
-				<!-- Grid spots (row 6) to be filled by contact info-->
-				<div class="gridItem">
-					<label id="gridFirst6"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridLast6"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridPhone6"></label>
-				</div>
-				<div class="gridItem">
-					<label id="gridEmail6"></label>
-				</div>
-				<div class="gridItem">
-					<button id="gridEdit6">edit</button>
-				</div>
-			</div>
-		</div>
+	<form method="GET" id="id1" action="{% url 'request_page' %}">
+		<input type="text" value="userContacts" name="mytextbox" id='mytextbox' size="1"/>
+		<input type="submit" class="btn" value="Click" name="mybtn">
+    </form>
 		
 		<div class="row mt-2 justify-content-evenly">
 			<div class="col text-start">
@@ -189,6 +71,33 @@
 		</div>
 	</div>
 	
+	<script>
+		$(document).ready( function(){
+			$('#id1').submit( function(e){ 
+			e.preventDefault();
+			$.ajax({
+					url:  $(this).attr('action'),
+					type: $(this).attr('method'),
+					data: $(this).serialize(),
+					success:function( value ){
+					$('#datatable').bootstrapTable({
+						striped: true,
+						pagination: true,
+						showColumns: true,
+						showToggle: true,
+						showExport: true,
+						sortable: true,
+						paginationVAlign: 'both',
+						pageSize: 25,
+						pageList: [10, 25, 50, 100, 'ALL'],
+						columns: {{ columns|safe }},  
+						data: {{ data|safe }}, 
+						});
+					}
+				})
+			})
+		});
+	</script>
 </body>
 
 </html>
