@@ -7,7 +7,7 @@ include("api.php");
 // Start or resume the session
 session_start();
 
-//Set the clientID variable to send to JS (set to the empty string if it doesnt)
+//Set the clientID variable to send to JS (set to the empty string if it doesnt exist)
 $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 ?>
 
@@ -50,24 +50,30 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 		
 	</style>
 </head>
+
+
 <body>
+	<!--Banner-->
 	<div class="container-fluid mb-5">
 		<div class="row" style="font-size: 24px; background-color: LightCyan;">
 				<b>CRUD</b>
 		</div>
 	</div>
 	
+	<!--Table-->
 	<div class="container">
+
+		<!--Search-->
 		<div class="row">
 			<div class="col">
-				<form id="searchForm" method="login" onsubmit="searchContacts(event)">
+				<form id="searchForm" method="post" oninput="sendParam(event)">
 					<label>SEARCH</label>
 					<input type="text" id="searchBox" name="searchBox">
-					<input type="submit" id="searchButton" value="      GO      ">
 				</form>
 			</div>
 		</div>
 		
+		<!--Contacts-->
 		<div class="row mt-2">
 			<div class="grid">
 				<!-- Row 0, grid headers-->
@@ -89,19 +95,19 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 				
 				<!-- Grid spots (row 1) to be filled by contact info-->
 				<div class="gridItem">
-					<label id="gridFirst1">Apple</label>
+					<label id="gridFirst1"></label>
 				</div>
 				<div class="gridItem">
-					<label id="gridLast1">Sauce</label>
+					<label id="gridLast1"></label>
 				</div>
 				<div class="gridItem">
-					<label id="gridPhone1">8005093345</label>
+					<label id="gridPhone1"></label>
 				</div>
 				<div class="gridItem">
-					<label id="gridEmail1">asauce@hotmail.com</label>
+					<label id="gridEmail1"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit1">+</button>
+					<button id="gridEdit1" onclick="editPress(1)">+</button>
 				</div>
 				
 				<!-- Grid spots (row 2) to be filled by contact info-->
@@ -118,7 +124,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<label id="gridEmail2"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit2">+</button>
+					<button id="gridEdit2" onclick="editPress(2)">+</button>
 				</div>
 				
 				<!-- Grid spots (row 3) to be filled by contact info-->
@@ -135,7 +141,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<label id="gridEmail3"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit3">+</button>
+					<button id="gridEdit3" onclick="editPress(3)">+</button>
 				</div>
 				
 				<!-- Grid spots (row 4) to be filled by contact info-->
@@ -152,7 +158,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<label id="gridEmail4"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit4">+</button>
+					<button id="gridEdit4" onclick="editPress(4)">+</button>
 				</div>
 				
 				<!-- Grid spots (row 5) to be filled by contact info-->
@@ -169,7 +175,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<label id="gridEmail5"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit5">+</button>
+					<button id="gridEdit5" onclick="editPress(5)">+</button>
 				</div>
 				
 				<!-- Grid spots (row 6) to be filled by contact info-->
@@ -186,7 +192,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<label id="gridEmail6"></label>
 				</div>
 				<div class="gridItem">
-					<button id="gridEdit6">+</button>
+					<button id="gridEdit6" onclick="editPress(6)">+</button>
 				</div>
 			</div>
 		</div>
@@ -201,14 +207,14 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 			</div>
 		</div>
 	</div>
-	
-	<!--Dynamic message space. Some errors are printed to here from the js file-->
-	<div id="message"></div>
 
+	
 	<!--Send the ID variable over to JS-->
 	<script type="text/javascript">
 		const clientID = '<?php echo $clientID?>'; 
 	</script>
 	<script src="contact.js"></script>
+
+
 </body>
 </html>

@@ -23,8 +23,8 @@ function submitRegis(event) {
 
     //Send the json data out to our API
     fetch('api.php', {
-        method: 'REGIS', //Specify request type
-        headers: { // Specify JSON formatting
+        method: 'REGIS', // Specify request type
+        headers: {       // Specify JSON formatting
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData) // The data we're sending out to the API

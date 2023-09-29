@@ -1,6 +1,7 @@
-//Executes when the page loads
 
 //-----------------------Fill out the contacts table-----------------------
+//    This code will exectue as soon as the HTML loads the JS link
+
 //Initialize the data we want to json stringify
 const formData = {
     id: clientID
@@ -8,8 +9,8 @@ const formData = {
 
 //Send the json data out to our API
 fetch('api.php', {
-    method: 'LOAD', //Specify request type
-    headers: { // Specify JSON formatting
+    method: 'LOAD', // Specify request type
+    headers: {      // Specify JSON formatting
         'Content-Type': 'application/json'
     },
     body: JSON.stringify(formData) // The data we're sending out to the API
@@ -32,8 +33,12 @@ fetch('api.php', {
             }
         }
 
+        //If a URL parameter was manually inserted when requesting this page, address the request
+        let urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.has('search')) searchContacts();
+
     } else {
-        //Print error message in the message div
+        //Print error message to the console
         console.error("DATA RETURNED FALSE!");
     }
 })
@@ -43,11 +48,26 @@ fetch('api.php', {
 });
 
 
-//-----------------------Search Function-----------------------
-//User searched the contact table for a string
-function searchContacts(event) { 
-    event.preventDefault(); //Keeps from actually submitting so we can submit
+//-----------------------Search Functions-----------------------
 
+//Update the url to include the search parameter
+function sendParam(){
+
+    //Aquire the URL
+    const searchURL = new URL(window.location);
+    searchURL.searchParams.set('search', document.getElementById("searchBox").value.toLowerCase());
+
+    //Push the parameter
+    window.history.pushState({}, '', searchURL);
+
+    //Handle the search request
+    searchContacts();
+}
+
+//User searched the contact table for a string
+function searchContacts() { 
+
+    //Mark all elements as visible just in case this is not the first table search
     for(let i = 1; i <= 6; i++) {
         if(document.getElementById("gridFirst"+i.toString()).innerHTML != '') {
                 document.getElementById("gridFirst"+i.toString()).style.display = 'block';
@@ -58,7 +78,12 @@ function searchContacts(event) {
         }
     }
 
-    const key = document.getElementById("searchBox").value.toLowerCase();
+    //Grab the search parameter from the URL
+    var key = '';
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.has('search')) key = urlParams.get('search');
+
+    //Array to keep track of which rows contain a matchless contact
     var emptyRows = [];
 
     // Search the table for any partial match with our key
@@ -69,7 +94,7 @@ function searchContacts(event) {
             ||document.getElementById("gridPhone"+i.toString()).innerHTML.toLowerCase().includes(key)
             ||document.getElementById("gridEmail"+i.toString()).innerHTML.toLowerCase().includes(key)) {
 
-            //Move the row to the first avaliable row
+            //Move the current row up to the first avaliable spot
             if(emptyRows.length > 0) {
                 swap(i.toString(), emptyRows.shift());
                 emptyRows.push(i); //Mark this row as an empty row
@@ -88,6 +113,7 @@ function searchContacts(event) {
     }
 }
 
+//Takes the location of two rows in the table - the current row, and the topmost empty row, respectively - and swaps them
 function swap(i, j) {
     //Swap the first names
     temp = document.getElementById("gridFirst"+i).innerHTML;
@@ -120,4 +146,26 @@ function swap(i, j) {
     //Swap buttons
     document.getElementById("gridEdit"+i).innerHTML = "+";
     document.getElementById("gridEdit"+j).innerHTML = "Edit";
+}
+
+
+//-----------------------Button Functions-----------------------
+// An Edit button was pressed
+function editPress(row) {
+    let first = document.getElementById("gridFirst"+row.toString()).innerHTML;
+    let last = document.getElementById("gridLast"+row.toString()).innerHTML;
+    let email = document.getElementById("gridEmail"+row.toString()).innerHTML;
+    let phone = document.getElementById("gridPhone"+row.toString()).innerHTML;
+    let text = document.getElementById("gridEdit"+row.toString()).innerHTML;
+
+    if(text.localeCompare("+") == 0) {
+        //ADD
+    } else if(text.localeCompare("Edit") == 0) {
+        
+        //Send the user to the update contact page with information about the specified contact in the URL
+        //window.location.href = "update.php?first="+first+"&last="+last+"&email="+email+"&phone="+phone;
+
+    } else {
+        console.error("INVALID BUTTON CONTENTS!!");
+    }
 }

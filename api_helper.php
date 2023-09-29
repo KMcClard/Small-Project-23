@@ -2,11 +2,10 @@
 
 //An API function would like the ID of the current user
 function fetchID($con, $username, $password) {
-    /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in blind_params!*/
 
     //Safely preform a SELECT query using a prepared statement
     $stmt = $con->prepare("SELECT (clientID) FROM smlpj WHERE (username=? AND passwordHashed=?)");
-    //Blind parameters
+    //Bind the anonymous parameters
     $stmt->bind_param("ss", $username, $password);
 
     //Attempt to execute our query
@@ -21,37 +20,37 @@ function fetchID($con, $username, $password) {
             //Terminating query
             $stmt->close();
             
+            //Return the ID to the parent API function
             return $clientId;
         }
 
 
     //Error communicating with the database
     } catch(mysqli_sql_exception) {
-        //Terminating query
+        //Terminate query and return an erroneous value
         $stmt->close();
-        
         return 0;
     }
 
-    //Terminating query
+    //End of execution; should never be reached. Terminate query and return an erroneous value
     $stmt->close();
-
     return 0;
 }
+
 
 //An API function would like to populate the session of the current user
 function fetchUserInfo($con, $username, $password) {
 
-    /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in blind_params!*/
-
     //Safely preform a SELECT query using a prepared statement
     $stmt = $con->prepare("SELECT * FROM smlpj WHERE (username=? AND passwordHashed=?)");
-    //Blind parameters
+    //Bind the anonymous parameters
     $stmt->bind_param("ss", $username, $password);
 
     //Attempt to execute our query
     try {
         $stmt->execute();
+
+        //Bind the query results to the specified variables
         $stmt->bind_result($clientId, $firstName, $lastName, $username, $email, $phone, $passwordHashed, $dateCreated);
 
         //Populate the array with the retrieved values
@@ -73,7 +72,7 @@ function fetchUserInfo($con, $username, $password) {
         return array();
     }
 
-    //Terminating query
+    //End of execution; should never be reached. Terminate query and return an empty array
     $stmt->close();
     return array();
 }
