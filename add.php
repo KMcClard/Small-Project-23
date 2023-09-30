@@ -1,6 +1,4 @@
 <?php
-// contact.php
-
 // Include the API script
 include("api.php");
 

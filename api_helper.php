@@ -4,7 +4,7 @@
 function fetchID($con, $username, $password) {
 
     //Safely preform a SELECT query using a prepared statement
-    $stmt = $con->prepare("SELECT (clientID) FROM userlogins WHERE (Username=? AND PasswordHashed=?)");
+    $stmt = $con->prepare("SELECT (clientID) FROM userLogins WHERE (Username=? AND PasswordHashed=?)");
     //Bind the anonymous parameters
     $stmt->bind_param("ss", $username, $password);
 
@@ -42,7 +42,7 @@ function fetchID($con, $username, $password) {
 function fetchUserInfo($con, $username, $password) {
 
     //Safely preform a SELECT query using a prepared statement
-    $stmt = $con->prepare("SELECT * FROM userlogins WHERE (Username=? AND PasswordHashed=?)");
+    $stmt = $con->prepare("SELECT * FROM userLogins WHERE (Username=? AND PasswordHashed=?)");
     //Bind the anonymous parameters
     $stmt->bind_param("ss", $username, $password);
 

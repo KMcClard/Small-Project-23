@@ -57,7 +57,7 @@ function regisUser($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform an INSERT query using a prepared statement
-        $stmt = $con->prepare("INSERT INTO userlogins (FirstName, LastName, Email, Username, PasswordHashed, Phone) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO userLogins (FirstName, LastName, Email, Username, PasswordHashed, Phone) VALUES (?, ?, ?, ?, ?, ?)");
         //Bind the anonymous parameters
         $stmt->bind_param("sssssi", $firstname, $lastname, $email, $username, $hash, $phone);
 
@@ -108,7 +108,7 @@ function loginUser($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a SELECT query using a prepared statement
-        $stmt = $con->prepare("SELECT PasswordHashed FROM userlogins WHERE Username=?");
+        $stmt = $con->prepare("SELECT PasswordHashed FROM userLogins WHERE Username=?");
         //Bind the anonymous parameters
         $stmt->bind_param("s", $username);
 
@@ -171,7 +171,7 @@ function loadContacts($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a SELECT query using a prepared statement
-        $stmt = $con->prepare("SELECT * FROM usercontacts WHERE (ownerID=?)");
+        $stmt = $con->prepare("SELECT * FROM userContacts WHERE (ownerID=?)");
         //Bind the anonymous parameters
         $stmt->bind_param("i", $clientID);
 
@@ -225,7 +225,7 @@ function updateContact($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform an UPDATE query using a prepared statement
-        $stmt = $con->prepare("UPDATE usercontacts SET FirstName=?, LastName=?, Email=?, Phone=? WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
+        $stmt = $con->prepare("UPDATE userContacts SET FirstName=?, LastName=?, Email=?, Phone=? WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
         //Bind the anonymous parameters
         $stmt->bind_param("sssiisssi", $newFirst, $newLast, $newEmail, $newPhone, $ownerID, $oldFirst, $oldLast, $oldEmail, $oldPhone);
 
@@ -265,7 +265,7 @@ function deleteContact($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a DELETE query using a prepared statement
-        $stmt = $con->prepare("DELETE FROM usercontacts WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
+        $stmt = $con->prepare("DELETE FROM userContacts WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
         //Bind the anonymous parameters
         $stmt->bind_param("isssi", $ownerID, $firstName, $lastName, $email, $phone);
 
@@ -304,7 +304,7 @@ function addContact($con) {
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform an INSERT query using a prepared statement
-        $stmt = $con->prepare("INSERT INTO usercontacts (ownerID, FirstName, LastName, Email, Phone) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO userContacts (ownerID, FirstName, LastName, Email, Phone) VALUES (?, ?, ?, ?, ?)");
         //Bind the anonymous parameters
         $stmt->bind_param("isssi", $ownerID, $firstname, $lastname, $email, $phone);
 
