@@ -1,4 +1,3 @@
-<!--These are smaller queries that are made within other query functions-->
 <?php
 
 //An API function would like the ID of the current user

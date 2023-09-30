@@ -1,4 +1,3 @@
-<!--Main endpoints for our application-->
 <?php
 
 //Include
