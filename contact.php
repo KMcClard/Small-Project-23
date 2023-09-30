@@ -18,7 +18,8 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 	<title>CRUD</title>	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+	<link rel="icon" href="favicon.png">
+	
 	<style>
 		body {
 			background-color: linen;
@@ -55,11 +56,17 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 
 <body>
 	<!--Banner-->
-	<div class="container-fluid mb-5">
-		<div class="row" style="font-size: 24px; background-color: LightCyan;">
-				<b>CRUD</b>
-		</div>
-	</div>
+	<nav class="navbar mb-2" style="background-color: lightcyan; border-bottom: 2px solid darkblue;">
+	  <div class="container-fluid">
+		<span class="navbar-brand mb-0 h1" style="font-size: 24px;">
+			<img src="favicon.png" alt="Bootstrap" width="40" height="36">
+			CRUDDY CONTACTS
+		</span>
+		<a class="navbar-brand h1" id="logout" href="index.html" style="font-size: 24px;">
+		LOGOUT
+		</a>
+	  </div>
+	</nav>
 	
 	<!--Table-->
 	<div class="container">
