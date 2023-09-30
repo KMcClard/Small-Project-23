@@ -71,3 +71,54 @@ function updateContact(event) {
     });
 
 }
+
+
+//User wanted to delete a contact
+function deleteContact() {
+
+    //Take the elements and map them to variables
+    const firstName = document.getElementById("firstUpdate").value;
+    const lastName = document.getElementById("lastUpdate").value;
+    const email = document.getElementById("emailUpdate").value;
+    const phone = document.getElementById("phoneUpdate").value;
+
+    //Initialize the data we want to json stringify
+    const formData = {
+        id: clientID,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        phone: phone
+    };
+
+    //Send the json data out to our API
+    fetch('api.php', {
+        method: 'DELET', // Specify request type
+        headers: {       // Specify JSON formatting
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData) // The data we're sending out to the API
+    })
+    .then(response => response.json()) //Retrieve the response json and parse it
+    .then(data => {
+        //If the response json echoed a success
+        if (data.success) {
+            // Redirects to the contacts page
+            window.location.href = "contact.php";
+        } else {
+            //Print error message in the message div
+            document.getElementById("message").innerHTML = '<p>Deletion failed. Please check the information you provided.</p>';
+        }
+    })
+    // This should not happen. Some issue while talking to the database, or in JSON formatting
+    .catch(error => {
+        document.getElementById("message").innerHTML = '<p>Deletion failed. Please check the information you provided.</p>';
+        console.error('Error:', error);
+    });
+
+}
+
+//The user cancelled the contact edit
+function leavePage() {
+    window.location.href = "contact.php";
+}

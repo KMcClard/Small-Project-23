@@ -1,4 +1,4 @@
-<!--PHP code to connect this page to the website session. Feel free to take this out and reformat to HTML if it messes with Bootstrap; I can readd it any time-->
+<!--PHP code to connect this page to the website session. Feel free to take this out and reformat to HTML if it messes with Bootstrap; I can re-add it any time-->
 <?php
 // Include the API script
 include("api.php");

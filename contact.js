@@ -158,14 +158,18 @@ function editPress(row) {
     let phone = document.getElementById("gridPhone"+row.toString()).innerHTML;
     let text = document.getElementById("gridEdit"+row.toString()).innerHTML;
 
-    if(text.localeCompare("+") == 0) {
-        //ADD
-    } else if(text.localeCompare("Edit") == 0) {
+    //Check if it were an add or update button that was selected
+    if(text.localeCompare("+") == 0) { //Add
+        
+        // Redirects to the contactAdd page
+        window.location.href = "add.php";
+        
+    } else if(text.localeCompare("Edit") == 0) { //Edit
         
         //Send the user to the update contact page with information about the specified contact in the URL
         window.location.href = "update.php?first="+first+"&last="+last+"&email="+email+"&phone="+phone;
 
-    } else {
+    } else { //Neither
         console.error("INVALID BUTTON CONTENTS!!");
     }
 }

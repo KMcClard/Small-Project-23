@@ -1,29 +1,26 @@
 
-//User tried to register an account by hitting the submit button, which calls this function
-function submitRegis(event) { 
+//User tried to add a contact by submitting the add form
+function addContact(event) { 
     event.preventDefault(); //Keeps from actually submitting so we can submit
 
     //Take the elements and map them to variables
-    const firstname = document.getElementById("firstName").value;
-    const lastname = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const phone = document.getElementById("phone").value;
+    const firstName = document.getElementById("firstAdd").value;
+    const lastName = document.getElementById("lastAdd").value;
+    const email = document.getElementById("emailAdd").value;
+    const phone = document.getElementById("phoneAdd").value;
 
     //Initialize the data we want to json stringify
     const formData = {
-        firstname: firstname,
-        lastname: lastname,
+        id: clientID,
+        firstname: firstName,
+        lastname: lastName,
         email: email,
-        username: username,
-        password: password,
         phone: phone
     };
 
     //Send the json data out to our API
     fetch('api.php', {
-        method: 'REGIS', // Specify request type
+        method: 'ADD',   // Specify request type
         headers: {       // Specify JSON formatting
             'Content-Type': 'application/json'
         },
@@ -37,12 +34,18 @@ function submitRegis(event) {
             window.location.href = "contact.php";
         } else {
             //Print error message in the message div
-            document.getElementById("message").innerHTML = '<p>Registration failed. Please check the information you provided.</p>';
+            document.getElementById("message").innerHTML = '<p>Unable to add the contact as requested. Please check your credentials.</p>';
         }
     })
     // This should not happen. Some issue while talking to the database, or in JSON formatting
     .catch(error => {
-        document.getElementById("message").innerHTML = '<p>Registration failed. Please check the information you provided.</p>';
+        document.getElementById("message").innerHTML = '<p>Unable to add the contact as requested. Please check your credentials.</p>';
         console.error('Error:', error);
     });
+}
+
+
+//The user cancelled the contact addition
+function leavePage() {
+    window.location.href = "contact.php";
 }
