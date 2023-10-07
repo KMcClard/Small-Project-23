@@ -63,8 +63,9 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 			background-color: #BA5059 !important;	
 		}
 		td,th {
-			background-color: #E6E2DD !important;
-			/* border-color: #E6E2DD !important;*/
+			color: #E6E2DD;
+			background-color: #D48166 !important;
+			/* border-color: #D48166 !important;*/
 			/*overflow: hidden;*/
 		}
 		table {
@@ -147,7 +148,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 
 		<div class="d-flex justify-content-between">
 			<li class="d-flex justify-content-left align-self-center  nav-item dropdown" style="margin-right:20px" >
-          			<a class="nav-link dropdown-toggle" style="background-color: white;" href="#" role="button" data-bs-toggle="dropdown" id="currentFilter" aria-expanded="false">
+          			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="currentFilter" aria-expanded="false">
             				Filter Choice
           			</a>
 				<ul class="dropdown-menu">
@@ -157,7 +158,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<li><a class="dropdown-item" onclick="setFilterParameter(this)" data-filter="Email">Email</a></li>
           			</ul>
         		</li>
-			<form id="searchForm" class="d-flex-inline justify-content-between" method="post" oninput="manualSearch(event)">
+			<form id="searchForm" style="background-color: white;" class="d-flex-inline justify-content-between" method="post" oninput="manualSearch(event)">
 				<input class="form-control justify-content-center me-2" style="background-color:#3E343E" type="text" placeholder="search" id="searchBox" name="searchBox">
 			</form>
 		</div>	
