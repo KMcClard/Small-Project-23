@@ -55,12 +55,12 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 		}
 		
 		.navbar-custom {
-			background-color: #E6E2DD;
+			background-color: #D48166;
 			box-shadow: 0px 0px 5px 1px black;
 			
 		}
 		.table-custom {
-			background-color: #E6E2DD !important;	
+			background-color: #D48166 !important;	
 		}
 		td,th {
 			color: #E6E2DD;
@@ -159,7 +159,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
           			</ul>
         		</li>
 			<form id="searchForm" style="background-color: white;" class="d-flex-inline justify-content-between" method="post" oninput="manualSearch(event)">
-				<input class="form-control justify-content-center me-2" style="background-color:#3E343E" type="text" placeholder="search" id="searchBox" name="searchBox">
+				<input class="form-control justify-content-center me-2" style="background-color: white" type="text" placeholder="search" id="searchBox" name="searchBox">
 			</form>
 		</div>	
 		<button class="navbar-brand align-text-center" id="logout" style="font-size: 24px;" >
