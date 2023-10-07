@@ -55,12 +55,12 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 		}
 		
 		.navbar-custom {
-			background-color: #BA5059;
+			background-color: #E6E2DD;
 			box-shadow: 0px 0px 5px 1px black;
 			
 		}
 		.table-custom {
-			background-color: #BA5059 !important;	
+			background-color: #E6E2DD !important;	
 		}
 		td,th {
 			color: #E6E2DD;
