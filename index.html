@@ -76,14 +76,9 @@
     <div class="contactNav">
   <nav class="navbar navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="../">
+        <div class="navbar-brand">
                 <img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
                 CRUDDY CONTACTS
-        </a>
-        <div class="d-flex align-text-center">
-              <a class="navbar-brand align-text-center" id="logout" href="index.html" style="font-size: 24px;">
-                LOGOUT
-              </a>
         </div>
   </nav>
 </div>
@@ -97,24 +92,25 @@
 				<br>
 				
                 <form id="loginForm" method="post" onsubmit="submitLogin(event)">
-			<!--<label for="usernameLogin"><b>USERNAME</b></label><br>--->
-		<div class="form-outline mb-2">	
-                    <input class="form-control-sm col-4" type="text" id="usernameLogin" name="usernameLogin" placeholder="Username" required><br><br>
-		</div>
-		    <!--<label for="passwordLogin"><b>PASSWORD</b></label><br>--->
+				<!--<label for="usernameLogin"><b>USERNAME</b></label><br>--->
+				<div class="form-outline mb-2">	
+							<input class="form-control-sm col-4" type="text" id="usernameLogin" name="usernameLogin" placeholder="Username" required><br><br>
+				</div>
+				<!--<label for="passwordLogin"><b>PASSWORD</b></label><br>--->
                     <input class="form-control-sm col-4" type="password" id="passwordLogin" name="passwordLogin" placeholder="Password" required><br><br>
 
                     <input class="btn col-4  btn-primary" type="submit" id="loginButton" value="Log In"><br><br>
                 </form>
-		<div class="register">				
-		<p>Not a member?</p><a id="registerLink" href="register.html">Sign up here</a>
+				
+				<!--Dynamic message space. Some errors are printed to here from the js file-->
+				<div id="message"></div>
+				
+				<div class="register">				
+					<p>Not a member?</p><a id="registerLink" href="register.html">Sign up here</a>
+				</div>
 			</div>
 		</div>
-		</div>
 	</div>
-
-    <!--Dynamic message space. Some errors are printed to here from the js file-->
-    <div id="message"></div>
 
     <script src="index.js"></script>
 </body>
