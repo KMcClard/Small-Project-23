@@ -23,17 +23,38 @@ try {
 //Determine which function should be called based off the request method
 if ($_SERVER['REQUEST_METHOD'] === 'REGIS') {
     regisUser($con);
+
 } else if ($_SERVER['REQUEST_METHOD'] === 'LOGIN') {
     loginUser($con);
+
 } else if ($_SERVER['REQUEST_METHOD'] === 'LOAD') {
-    loadContacts($con);
+    if(isset($_GET['pageNum']) && isset($_GET['substring'])){
+	    $currentPage = $_GET['pageNum'];
+	    $substringIndex = $_GET['substring'];
+	    $filter = $_GET['filter'];
+    	loadContacts($con,$currentPage,$substringIndex . "%",$filter);
+
+    } else if(isset($_GET['pageNum'])) {
+	    $currentPage = $_GET['pageNumber'];
+	    loadContacts($con,$pageNumber,"%","FirstName");
+
+    } else if(isset($_GET['substring'])) {
+	    $substringIndex = $_GET['substring'];
+        loadContacts($con,1,$substringIndex . "%","FirstName");
+
+    } else loadContacts($con,1,"%","FirstName");
+
+
 } else if ($_SERVER['REQUEST_METHOD'] === 'UPDT') {
     updateContact($con);
+
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELET') {
     deleteContact($con);
+
 } else if ($_SERVER['REQUEST_METHOD'] === 'ADD') {
     addContact($con);
 }
+
 
 
 //User would like to register an account
@@ -59,7 +80,7 @@ function regisUser($con) {
         //Safely preform an INSERT query using a prepared statement
         $stmt = $con->prepare("INSERT INTO userLogins (FirstName, LastName, Email, Username, PasswordHashed, Phone) VALUES (?, ?, ?, ?, ?, ?)");
         //Bind the anonymous parameters
-        $stmt->bind_param("sssssi", $firstname, $lastname, $email, $username, $hash, $phone);
+        $stmt->bind_param("ssssss", $firstname, $lastname, $email, $username, $hash, $phone);
 
         //Attempt to execute our query
         try {
@@ -159,28 +180,35 @@ function loginUser($con) {
 }
 
 //Front-End is requesting a list of the current user's contacts
-function loadContacts($con) {
+function loadContacts($con,$pageNumber,$substring,$searchParam) {
     //Double checking request method
     if ($_SERVER['REQUEST_METHOD'] === 'LOAD') {
         // Decode the incoming request (php://input is an input stream with raw JSON from the HTTP request body)
         $requestData = json_decode(file_get_contents("php://input"), true);
 
         //Pulling data from the json
-        $clientID = $requestData['id'];
+	    $clientID = $requestData['id'];
+	    $calcOffset = $pageNumber * 15;
+	
 
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a SELECT query using a prepared statement
-        $stmt = $con->prepare("SELECT * FROM userContacts WHERE (ownerID=?)");
-        //Bind the anonymous parameters
-        $stmt->bind_param("i", $clientID);
+        // $stmt = $con->prepare("SELECT * , 'test' AS testCol FROM userContacts WHERE (ownerID=?)");
+	    //$stmt = $con->prepare("SELECT *, (SELECT COUNT(*) FROM userContacts WHERE ownerID = ? AND FirstName LIKE ? ) AS contactCount FROM userContacts WHERE (ownerID=?) AND FirstName LIKE ? LIMIT 6 OFFSET ?");
+        $querySearch = "SELECT *, (SELECT COUNT(*) FROM userContacts WHERE ownerID = ? AND " .  $searchParam . " LIKE ? ) AS contactCount FROM userContacts WHERE (ownerID=?) AND " . $searchParam . " LIKE ? LIMIT 15 OFFSET ?";
+	    $stmt = $con->prepare($querySearch);	
+	    //Bind the anonymous parameters
+        $stmt->bind_param("isisi",$clientID,$substring,$clientID,$substring,$calcOffset);
 
         //Attempt to execute our query
         try {
             $stmt->execute();
 
             //Bind the query results to the specified variables
-            $stmt->bind_result($contactID, $ownerID, $firstName, $lastName, $phone, $email);
+            $stmt->bind_result($contactID, $ownerID, $firstName, $lastName, $phone, $email,$contactCount);
+
+	    $contacts = [];
 
             //Populate an array of arrays with contact information
             while($stmt->fetch()) {
@@ -189,10 +217,14 @@ function loadContacts($con) {
                     'lastname' => $lastName,
                     'email' => $email,
                     'phone' => $phone,
-                ];
+		    'contactID' => $contactID,
+		];
             }
-
-            $response = ['success' => true, 'contacts' => $contacts]; //Send the contacts in the JSON file
+		
+	    if($contactCount == null) $contactCount = 0;
+	
+	
+        $response = ['success' => true, 'contacts' => $contacts, 'debug' => $contactCount, 'search' => $substring, 'column' => $searchParam]; //Send the contacts in the JSON file
 
         //Error communicating with the database
         } catch(mysqli_sql_exception) {$response = ['success' => false];}
@@ -213,21 +245,18 @@ function updateContact($con) {
 
         //Pulling data from the json
         $ownerID = $requestData['id'];
-        $newFirst = $requestData['newfirst'];
-        $oldFirst = $requestData['oldfirst'];
-        $newLast = $requestData['newlast'];
-        $oldLast = $requestData['oldlast']; 
-        $newEmail = $requestData['newemail'];
-        $oldEmail = $requestData['oldemail'];
-        $newPhone = $requestData['newphone'];
-        $oldPhone = $requestData['oldphone'];
+        $firstname = $requestData['firstname'];
+        $email = $requestData['email'];
+        $phone = $requestData['phone'];
+        $contactId = $requestData['contactId']; 
+        $lastname = $requestData['lastname'];
     
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform an UPDATE query using a prepared statement
-        $stmt = $con->prepare("UPDATE userContacts SET FirstName=?, LastName=?, Email=?, Phone=? WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
+        $stmt = $con->prepare("UPDATE userContacts SET FirstName=?, LastName=?, Email=?, Phone=? WHERE (ownerID = ? AND contactID = ?)");
         //Bind the anonymous parameters
-        $stmt->bind_param("sssiisssi", $newFirst, $newLast, $newEmail, $newPhone, $ownerID, $oldFirst, $oldLast, $oldEmail, $oldPhone);
+        $stmt->bind_param("ssssii", $firstname, $lastname, $email, $phone,$ownerID, $contactId);
 
         //Attempt to execute our query
         try {
@@ -257,17 +286,14 @@ function deleteContact($con) {
 
         //Pulling data from the json
         $ownerID = $requestData['id'];
-        $firstName = $requestData['firstName'];
-        $lastName = $requestData['lastName'];
-        $email = $requestData['email'];
-        $phone = $requestData['phone']; 
+        $contactId = $requestData['contactId']; 
     
         /*If the stmts aren't in the format below, we are prone to SQL injections! Please have values '?' in the con->prepare and only specify them in bind_params!*/
 
         //Safely preform a DELETE query using a prepared statement
-        $stmt = $con->prepare("DELETE FROM userContacts WHERE (ownerID=? AND FirstName=? AND LastName=? AND Email=? AND Phone=?)");
+        $stmt = $con->prepare("DELETE FROM userContacts WHERE (ownerID=? AND contactID=?)");
         //Bind the anonymous parameters
-        $stmt->bind_param("isssi", $ownerID, $firstName, $lastName, $email, $phone);
+        $stmt->bind_param("ii", $ownerID, $contactId);
 
         //Attempt to execute our query
         try {

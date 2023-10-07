@@ -2,7 +2,7 @@
 //User tried to register an account by hitting the submit button, which calls this function
 function submitRegis(event) { 
     event.preventDefault(); //Keeps from actually submitting so we can submit
-
+    console.log("Test");
     //Take the elements and map them to variables
     const firstname = document.getElementById("firstName").value;
     const lastname = document.getElementById("lastName").value;
@@ -36,12 +36,16 @@ function submitRegis(event) {
             // Redirects to the contacts page
             window.location.href = "contact.php";
         } else {
+	    
+	    console.log(JSON.stringify(formData));
             //Print error message in the message div
-            document.getElementById("message").innerHTML = '<p>Registration failed. Please check the information you provided.</p>';
+	    console.log("This is our values: " + firstname + " , " + lastname + "," + email + " , " + username + " , " + password + "," + phone);
+            document.getElementById("message").innerHTML = '<p>Registration failed due to api call. Please check the information you provided.</p>';
         }
     })
     // This should not happen. Some issue while talking to the database, or in JSON formatting
     .catch(error => {
+	console.log("Not Working");
         document.getElementById("message").innerHTML = '<p>Registration failed. Please check the information you provided.</p>';
         console.error('Error:', error);
     });

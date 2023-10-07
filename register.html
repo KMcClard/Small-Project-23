@@ -7,62 +7,118 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="icon" href="favicon.ico">
-	
+	<script src="register.js"></script>
+
 	<style>
-		body {
-			background-color: linen;
-		}
-		
-		h1 {
-			color: maroon;
-			margin-left: 4px;
-		}
+		  h1 {
+          color: maroon;
+          margin-left: 4px;
+  }
+
+  .topBar {
+          margin: auto;
+          width: 100%;
+          padding-left: 8px;
+          text-align: left;
+          font-size: 24px;
+          background-color: LightCyan;
+  }
+
+  .centerWindow {
+          margin-top: auto;
+          width: 50%;
+          border-radius: 32px;
+          border: 3px solid RoyalBlue;
+          padding: 10px;
+          text-align: center;
+          background-color: LightCyan;
+  }
+
+  .centerWindow2 {
+          border-radius: 32px;
+          border: 3px solid RoyalBlue;
+          background-color: LightCyan;
+  }
+
+  body {
+          background-color: #3E343E;
+          font-family: "arial" !important;
+  }
+
+  nav{
+          background-color: #3B4252;
+  }
+
+  .navbar-custom {
+          background-color: #BA5059;
+          box-shadow: 0px 0px 5px 1px black;
+          margin-bottom: 5%;
+  }
+
+  .registerContainer {
+          background-color : #BA5059;
+          box-shadow: 0px 0px 5px 2px black;
+          padding-top: 2%;
+          padding-bottom: 2%;
+  }
+  .register p,
+  .register a, {
+          display:inline-block;
+          verticle-align:middle;
+  }
 	</style>
 </head>
 
 
 <body>
-    <nav class="navbar mb-2" style="background-color: lightcyan; border-bottom: 2px solid darkblue;">
-	  <div class="container-fluid">
-		<span class="navbar-brand mb-0 h1" style="font-size: 24px;">
-			<img src="favicon.ico" alt="Bootstrap" width="40" height="36">
-			CRUDDY CONTACTS
-		</span>
-	  </div>
-	</nav>
+   	
+	<div class="contactNav">
+  		<nav class="navbar navbar-custom">
+    			<div class="container-fluid">
+        			<a class="navbar-brand" href="../">
+                			<img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
+                				CRUDDY CONTACTS
+        			</a>
+        			<div class="d-flex align-text-center">
+              				<a class="navbar-brand align-text-center" id="logout" href="index.html" style="font-size: 24px;">
+                				LOGOUT
+              				</a>
+        			</div>
+			</div>
+  		<nav>
+	</div> 
 	
-	<div class="container text-center">
+	<div class="container col-6 text-center registerContainer border rounded-3">
 		<div class="row align-items-center">
-			<div class="col p-2" style="border-radius: 32px; border: 3px solid darkblue; background-color: lightcyan;">
+			<div class="col p-2" >
 				<label form="signupForm"><h1>Create a New Account</h1></label>
 				<hr>
 
 				<!--Signup Form-->
-				<form id="signupForm" method="post" onsubmit="submitRegis(event)">
+				<form class="mb-2" id="signupForm" method="post" onsubmit="submitRegis(event)">
 					
-					<label for="email"><b>EMAIL</b></label><br>
-					<input type="email" id="email" name="email" placeholder="Enter email" required><br><br>
+					<label class="mb-1" for="email"><b>EMAIL</b></label><br>
+					<input class="form-control-sm col-3" type="email" id="email" name="email" placeholder="Enter email" required><br><br>
 
-					<label for="username"><b>USERNAME</b></label><br>
-					<input type="text" id="username" name="username" placeholder="Create username" required><br><br>
+					<label class="mb-1" for="username"><b>USERNAME</b></label><br>
+					<input class="form-control-sm col-3" type="text" id="username" name="username" placeholder="Create username" required><br><br>
 
-					<label for="password"><b>PASSWORD</b></label><br>
-					<input type="password" id="password" name="password" placeholder="Create password" required><br><br>
+					<label class="mb-1" for="password"><b>PASSWORD</b></label><br>
+					<input class="form-control-sm col-3" type="password" id="password" name="password" placeholder="Create password" required><br><br>
 
-					<label for="firstName"><b>FIRST NAME</b></label><br>
-					<input type="text" id="firstName" name="firstName" placeholder="Enter first name" required><br><br>
+					<label class="mb-1" for="firstName"><b>FIRST NAME</b></label><br>
+					<input class="form-control-sm col-3" type="text" id="firstName" name="firstName" placeholder="Enter first name" required><br><br>
 
-					<label for="lastName"><b>LAST NAME</b></label><br>
-					<input type="text" id="lastName" name="lastName" placeholder="Enter last name" required><br><br>
+					<label class="mb-1" for="lastName"><b>LAST NAME</b></label><br>
+					<input class="form-control-sm col-3" type="text" id="lastName" name="lastName" placeholder="Enter last name" required><br><br>
 
-					<label for="phone"><b>PHONE</b></label><br>
-					<input type="number" id="phone" name="phone" placeholder="Enter phone number" required><br><br>
+					<label class="mb-1" for="phone"><b>PHONE</b></label><br>
+					<input class="form-control-sm col-3" type="text" id="phone" name="phone" placeholder="Enter phone number" required><br><br>
 
-					<input type="submit" id="signupButton" value="      SIGN UP      ">
+					<input class="btn btn-primary col-3 mt-1" type="submit" id="signupButton" value="      SIGN UP      ">
 				</form>
 
-				<br>
-				<a id="loginLink" href="index.html"> Return to login</a>
+				<a class="py-3" id="loginLink" href="index.html"> Return to login</a>
 			</div>
 		</div>
 	</div>
@@ -70,6 +126,6 @@
     <!--Dynamic message space. Some errors are printed to here from the js file-->
     <div id="message"></div>
 
-    <script src="register.js"></script>
+    
 </body>
 </html>

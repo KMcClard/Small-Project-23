@@ -9,9 +9,6 @@
 	<link rel="icon" href="favicon.ico">
 	
 	<style>
-		body {
-			background-color: linen;
-		}
 
 		h1 {
 			color: maroon;
@@ -42,40 +39,77 @@
 			border: 3px solid RoyalBlue;
 			background-color: LightCyan;
 		}
+	
+		body {
+  			background-color: #3E343E;
+  			font-family: "arial" !important;
+		}
+
+		nav{
+  			background-color: #3B4252;
+		}
+
+		.navbar-custom {
+			background-color: #BA5059;
+			box-shadow: 0px 0px 5px 1px black;
+			margin-bottom: 10%;
+		}
+		
+		.loginContainer {
+			background-color : #BA5059;
+			box-shadow: 0px 0px 5px 2px black;
+			padding-top: 2%;
+			padding-bottom: 2%;
+		}
+		.register p,
+		.register a, {
+			display:inline-block;
+			verticle-align:middle;
+		}
+
 	</style>
 </head>
 
 
 <body>
 	<!--Banner-->
-    <nav class="navbar mb-2" style="background-color: lightcyan; border-bottom: 2px solid darkblue;">
-	  <div class="container-fluid">
-		<span class="navbar-brand mb-0 h1" style="font-size: 24px;">
-			<img src="favicon.ico" alt="Bootstrap" width="40" height="36">
-			CRUDDY CONTACTS
-		</span>
-	  </div>
-	</nav>
+    <div class="contactNav">
+  <nav class="navbar navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="../">
+                <img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
+                CRUDDY CONTACTS
+        </a>
+        <div class="d-flex align-text-center">
+              <a class="navbar-brand align-text-center" id="logout" href="index.html" style="font-size: 24px;">
+                LOGOUT
+              </a>
+        </div>
+  </nav>
+</div>
 
 	<!--Login Form-->
-    <div class="container text-center">
+    <div class="container-sm col-4 text-center border rounded-3 loginContainer">
 		<div class="row align-items-center">
-			<div class="col p-2" style="border-radius: 32px; border: 3px solid RoyalBlue; background-color: LightCyan;">
+			<div class="col p-2" >
 				<h1>Welcome! Please Log In.</h1>
 				<hr>
+				<br>
 				
                 <form id="loginForm" method="post" onsubmit="submitLogin(event)">
-                    <label for="usernameLogin"><b>USERNAME</b></label><br>
-                    <input type="text" id="usernameLogin" name="usernameLogin" placeholder="Enter username" required><br><br>
+			<!--<label for="usernameLogin"><b>USERNAME</b></label><br>--->
+		<div class="form-outline mb-2">	
+                    <input class="form-control-sm col-4" type="text" id="usernameLogin" name="usernameLogin" placeholder="Username" required><br><br>
+		</div>
+		    <!--<label for="passwordLogin"><b>PASSWORD</b></label><br>--->
+                    <input class="form-control-sm col-4" type="password" id="passwordLogin" name="passwordLogin" placeholder="Password" required><br><br>
 
-                    <label for="passwordLogin"><b>PASSWORD</b></label><br>
-                    <input type="password" id="passwordLogin" name="passwordLogin" placeholder="Enter password" required><br><br>
-
-                    <input type="submit" id="loginButton" value="      LOG IN      "><br><br>
+                    <input class="btn col-4  btn-primary" type="submit" id="loginButton" value="Log In"><br><br>
                 </form>
-				
-				<a id="registerLink" href="register.html">New user? Sign up here</a>
+		<div class="register">				
+		<p>Not a member?</p><a id="registerLink" href="register.html">Sign up here</a>
 			</div>
+		</div>
 		</div>
 	</div>
 

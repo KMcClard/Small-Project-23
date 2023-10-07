@@ -1,6 +1,7 @@
 
 //User tried to log in by hitting the submit button, which calls this function
 function submitLogin(event) { 
+    localStorage.setItem('currentPage', 'index.html');
     event.preventDefault(); //Keeps from actually submitting so we can submit
 
     //Take the elements and map them to variables
