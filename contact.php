@@ -145,7 +145,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                 </div>
                         </div>
 
-		<div class="d-flex justify-conent-between">
+		<div class="d-flex justify-content-between">
 			<li class="d-flex justify-content-left align-self-center  nav-item dropdown" style="margin-right:20px" >
           			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="currentFilter" aria-expanded="false">
             				Filter Choice
