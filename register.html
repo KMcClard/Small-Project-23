@@ -11,7 +11,7 @@
 
 	<style>
 		  h1 {
-          color: maroon;
+          color: #E6E2DD;
           margin-left: 4px;
   }
 
@@ -41,7 +41,7 @@
   }
 
   body {
-          background-color: #3E343E;
+          background-color: #373A36;
           font-family: "arial" !important;
   }
 
@@ -50,13 +50,13 @@
   }
 
   .navbar-custom {
-          background-color: #BA5059;
+          background-color: #D48166;
           box-shadow: 0px 0px 5px 1px black;
           margin-bottom: 5%;
   }
 
   .registerContainer {
-          background-color : #BA5059;
+          background-color : #D48166;
           box-shadow: 0px 0px 5px 2px black;
           padding-top: 2%;
           padding-bottom: 2%;
@@ -74,16 +74,16 @@
    	
 	<div class="contactNav">
   		<nav class="navbar navbar-custom">
-    			<div class="container-fluid">
-        			<a class="navbar-brand" href="../">
-                			<img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
-                				CRUDDY CONTACTS
-        			</a>
-        			<div class="d-flex align-text-center">
-              				<a class="navbar-brand align-text-center" id="logout" href="index.html" style="font-size: 24px;">
-                				LOGOUT
-              				</a>
-        			</div>
+			<div class="container-fluid">
+				<a class="navbar-brand" href="../">
+						<img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
+							<b style="color: #E6E2DD;">CRUDDY CONTACTS</b>
+				</a>
+				<!--<div class="d-flex align-text-center">
+						<a class="navbar-brand align-text-center" id="logout" href="index.html" style="font-size: 24px;">
+							LOGOUT
+						</a>
+				</div>-->
 			</div>
   		<nav>
 	</div> 
@@ -97,25 +97,25 @@
 				<!--Signup Form-->
 				<form class="mb-2" id="signupForm" method="post" onsubmit="submitRegis(event)">
 					
-					<label class="mb-1" for="email"><b>EMAIL</b></label><br>
+					<label class="mb-1" for="email"><b style="color: #E6E2DD;">EMAIL</b></label><br>
 					<input class="form-control-sm col-3" type="email" id="email" name="email" placeholder="Enter email" required><br><br>
 
-					<label class="mb-1" for="username"><b>USERNAME</b></label><br>
+					<label class="mb-1" for="username" style="color: #E6E2DD;"><b>USERNAME</b></label><br>
 					<input class="form-control-sm col-3" type="text" id="username" name="username" placeholder="Create username" required><br><br>
 
-					<label class="mb-1" for="password"><b>PASSWORD</b></label><br>
+					<label class="mb-1" for="password" style="color: #E6E2DD;"><b>PASSWORD</b></label><br>
 					<input class="form-control-sm col-3" type="password" id="password" name="password" placeholder="Create password" required><br><br>
 
-					<label class="mb-1" for="firstName"><b>FIRST NAME</b></label><br>
+					<label class="mb-1" for="firstName" style="color: #E6E2DD;"><b>FIRST NAME</b></label><br>
 					<input class="form-control-sm col-3" type="text" id="firstName" name="firstName" placeholder="Enter first name" required><br><br>
 
-					<label class="mb-1" for="lastName"><b>LAST NAME</b></label><br>
+					<label class="mb-1" for="lastName" style="color: #E6E2DD;"><b>LAST NAME</b></label><br>
 					<input class="form-control-sm col-3" type="text" id="lastName" name="lastName" placeholder="Enter last name" required><br><br>
 
-					<label class="mb-1" for="phone"><b>PHONE</b></label><br>
+					<label class="mb-1" for="phone" style="color: #E6E2DD;"><b>PHONE</b></label><br>
 					<input class="form-control-sm col-3" type="text" id="phone" name="phone" placeholder="Enter phone number" required><br><br>
-
-					<input class="btn btn-primary col-3 mt-1" type="submit" id="signupButton" value="      SIGN UP      ">
+	
+					<input class="btn btn-primary col-3 mt-1" style="background-color: #E6E2DD; color: #D48166;" type="submit" id="signupButton" value="      SIGN UP      ">
 				</form>
 
 				<a class="py-3" id="loginLink" href="index.html"> Return to login</a>

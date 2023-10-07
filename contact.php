@@ -22,7 +22,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 	
 	<style>
 		body {
-			background-color: #3E343E;
+			background-color: #373A36;
 			font-family: "arial" !important;
 		}
 
@@ -63,13 +63,13 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 			background-color: #BA5059 !important;	
 		}
 		td,th {
-			background-color: #BA5059 !important;
-			/* border-color: #5D535C !important;*/
+			background-color: #E6E2DD !important;
+			/* border-color: #E6E2DD !important;*/
 			/*overflow: hidden;*/
 		}
 		table {
 			z-index : 0;
-			overflow:hidden;	
+			overflow:hidden;
 		}
 		button {
 			z-index:10;
@@ -92,10 +92,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 	<div class="contactNav">
 	  <nav class="navbar navbar-custom">
 	  <div class="container-fluid">
-		<a class="navbar-brand" href="../">
+		<div class="navbar-brand">
 			<img src="favicon.ico" alt="Bootstrap" width="40" height="36" class="d-inline-block align-text-center">
-			CRUDDY CONTACTS
-		</a>
+			<b style="color: #E6E2DD;">CRUDDY CONTACTS</b>
+		</div>
 		                        <div class="d-flex align-text-center">
                                 <button type="button" class="btn mb-2 mb-md-0 btn-secondary btn-sm btn-round mr-3" id="newContact" data-bs-toggle="modal" data-bs-target="#addModal">Add Contact</button>
                                 <!-- Modal -->
@@ -147,7 +147,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 
 		<div class="d-flex justify-content-between">
 			<li class="d-flex justify-content-left align-self-center  nav-item dropdown" style="margin-right:20px" >
-          			<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="currentFilter" aria-expanded="false">
+          			<a class="nav-link dropdown-toggle" style="background-color: white;" href="#" role="button" data-bs-toggle="dropdown" id="currentFilter" aria-expanded="false">
             				Filter Choice
           			</a>
 				<ul class="dropdown-menu">
@@ -187,8 +187,8 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 			<table class="table table-striped rounded-4 table-borderless table-custom table-container">
   				<thead>
     					<tr style="table-darker rounded table-container">
-      						        <th style="table-custom" scope="col">First</th>
-      						        <th scope="col">Last</th>
+      						<th style="table-custom" scope="col">First</th>
+      						<th scope="col">Last</th>
 							<th scope="col">Phone</th>
 							<th scope="col">Email</th>
 							<th scope="col">Options</th>
