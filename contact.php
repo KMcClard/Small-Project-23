@@ -183,7 +183,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 		</div>
 		
 		<!--Contacts-->
-		<div class="row mt-2 table-custome rounded-4">
+		<div class="row mt-2 table-custom rounded-4">
 			
 			<table class="table table-striped rounded-4 table-borderless table-custom table-container">
   				<thead>
