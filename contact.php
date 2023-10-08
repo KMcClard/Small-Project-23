@@ -99,7 +99,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 			<b style="color: #E6E2DD;">CRUDDY CONTACTS</b>
 		</div>
 		                        <div class="d-flex align-text-center">
-                                <button type="button" class="btn mb-2 mb-md-0 btn-secondary btn-sm btn-round mr-3" id="newContact" data-bs-toggle="modal" data-bs-target="#addModal">Add Contact</button>
+                                <button type="button" class="btn mb-2 mb-md-0 btn-secondary btn-sm btn-round mr-3" style="background-color: #E6E2DD; color: #D48166;" id="newContact" data-bs-toggle="modal" data-bs-target="#addModal">Add Contact</button>
                                 <!-- Modal -->
                                 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModal" aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
