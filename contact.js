@@ -91,7 +91,7 @@ function loadContacts(){
                         document.getElementById("gridPhone"+i.toString()).innerHTML = contact['phone'];
                         document.getElementById("gridEmail"+i.toString()).innerHTML = contact['email'];
                         document.getElementById("dropdownMenu"+i.toString()).style.display = "block";
-                        document.getElementById("dropdownMenu"+i.toString()).innerHTML = "Options";
+                        document.getElementById("dropdownMenu"+i.toString()).innerHTML = "Optionsx";
                     } else {
                         
                         document.getElementById("gridFirst"+i.toString()).innerHTML = "";
