@@ -192,7 +192,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
       						<th scope="col">Last</th>
 							<th scope="col">Phone</th>
 							<th scope="col">Email</th>
-							<th scope="col">Options</th>
+							<th scope="col">Optionsssssssss</th>
     					</tr>
   				</thead>
   				<tbody class="table-custom">
@@ -324,7 +324,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                                         <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu8" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu8">
 											<li><button class="dropdown-item" type="button" id="gridEdit8" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,8)">Edit</button></li>                                                                          
-											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deletModal" onclick="deletePress(this,8)">Delete</button></li>
+											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,8)">Delete</button></li>
 	
 									      </ul>
 
