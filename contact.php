@@ -240,7 +240,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 								<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"></input>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">	
 										<li><button class="dropdown-item" type="button" id="gridEdit3" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,3)">Edit</button></li>
-										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-toggle="#deleteModal" onclick="deletePress(this,3)">Delete</button></li>
+										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,3)">Delete</button></li>
 									</ul>
 								</div>
 							</td>		
