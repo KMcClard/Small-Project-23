@@ -65,6 +65,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 		td,th {
 			color: #E6E2DD;
 			background-color: #D48166 !important;
+			height: 2.5em !important;
 			/* border-color: #D48166 !important;*/
 			/*overflow: hidden;*/
 		}
@@ -203,7 +204,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail1"></td>
 							<td>
 								<div class="dropdown">
-									<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false" ></button>
+									<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false" ></input>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 										<li><button class="dropdown-item" type="button" id="gridEdit1" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,1)">Edit</button></li>
 										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,1)">Delete</button></li>
@@ -219,7 +220,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail2"></td>
 							<td>	
 								<div class="dropdown">
-									<button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"></button>
+									<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false"></input>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
 										<li><button class="dropdown-item" type="button" id="gridEdit2" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,2)">Edit</button></li>		
 										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#editModal" onclick="deletePress(this,2)">Delete</button></li>
@@ -236,7 +237,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail3"></td>
 							<td>	
 								<div class="dropdown">
-								<button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"></button>
+								<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-bs-toggle="dropdown" aria-expanded="false"></input>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">	
 										<li><button class="dropdown-item" type="button" id="gridEdit3" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,3)">Edit</button></li>
 										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-toggle="#deleteModal" onclick="deletePress(this,3)">Delete</button></li>
@@ -252,7 +253,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail4"></td>
 							<td>
 								<div class="dropdown">
-        	                                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" data-bs-toggle="dropdown" aria-expanded="false"></button>
+        	                         <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu4" data-bs-toggle="dropdown" aria-expanded="false"></input>
 									 <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
 										<li><button class="dropdown-item" type="button" id="gridEdit4" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,4)">Edit</button></li>
 										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,4)">Delete</button></li>
@@ -270,7 +271,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td>
 								
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu5" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu5">
 											<li><button class="dropdown-item" type="button" id="gridEdit5" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,5)">Edit</button></li>
 											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,5)">Delete</button></li>
@@ -288,7 +289,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail6"></td>
 							<td>
 								 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu6" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu6" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu6">
 								  			<li><button class="dropdown-item" type="button" id="gridEdit6" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,6)">Edit</button></li>                                                                          
 									     		<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,6)">Delete</button></li>
@@ -304,7 +305,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail7"></td>
 							<td>
 		                                                <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu7" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu7" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu7">
 											<li><button class="dropdown-item" type="button" id="gridEdit7" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,7)">Edit</button></li>
 											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,7)">Delete</button></li>
@@ -321,7 +322,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail8"></td>
 							<td>
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu8" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu8" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu8">
 											<li><button class="dropdown-item" type="button" id="gridEdit8" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,8)">Edit</button></li>                                                                          
 											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,8)">Delete</button></li>
@@ -339,7 +340,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail9"></td>
 							<td>
 								<div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu9" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu9" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu9">
 											<li><button class="dropdown-item" type="button" id="gridEdit9" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,9)">Edit</button></li>                                                                       
 									      		<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,9)">Delete</button></li>
@@ -357,10 +358,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail10"></td>
 							<td>
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu10" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu10" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu10">
 											<li><button class="dropdown-item" type="button" id="gridEdit10" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,10)">Edit</button></li>                                                                          
-									      		<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,10)">Delete</button></li>
+									      		<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,10)">Delete</button></li>
 									      </ul>
 								</div>
 							</td>
@@ -374,10 +375,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail11"></td>
 							<td>
 								<div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu11" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu11" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu11">
 											<li><button class="dropdown-item" type="button" id="gridEdit11" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,11)">Edit</button></li>                                                                          
-											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,11)">Delete</button></li>	
+											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,11)">Delete</button></li>	
 									      </ul>
 								</div>
 							</td>
@@ -389,10 +390,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail12"></td>
 							<td>
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu12" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu12" data-bs-toggle="dropdown" aria-expanded="false"></input type="image" src="gear.png">
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
 											<li><button class="dropdown-item" type="button" id="gridEdit12" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,12)">Edit</button></li>
-											 <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,12)">Delete</button></li>									  
+											 <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,12)">Delete</button></li>									  
 											
 
 										</ul>
@@ -407,10 +408,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail13"></td>
 							<td>
 	                                                          <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu13" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu13" data-bs-toggle="dropdown" aria-expanded="false"></input>
 								        	<ul class="dropdown-menu" aria-labelledby="dropdownMenu13">
 											<li><button class="dropdown-item" type="button" id="gridEdit13" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,13)">Edit</button></li>
-											 <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,13)">Delete</button></li>
+											 <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,13)">Delete</button></li>
 										</ul>
 								</div>
 							</td>
@@ -423,10 +424,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail14"></td>
 							<td>
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu14" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu14" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu14">
 											<li><button class="dropdown-item" type="button" id="gridEdit14" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,14)">Edit</button></li>    
-											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,14)">Delete</button></li>
+											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,14)">Delete</button></li>
 			
 									      </ul>
 								</div>
@@ -440,10 +441,10 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
                                                         <td id="gridEmail15"></td>
 							<td>
                                                                 <div class="dropdown">
-                                                                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu15" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                                                                        <input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu15" data-bs-toggle="dropdown" aria-expanded="false"></input>
                                                                               <ul class="dropdown-menu" aria-labelledby="dropdownMenu15">
 											<li><button class="dropdown-item" type="button" id="gridEdit15" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,15)">Edit</button></li>  
-											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletPress(this,15)">Delete</button></li>
+											<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,15)">Delete</button></li>
 
 									</ul>
 								</div>
