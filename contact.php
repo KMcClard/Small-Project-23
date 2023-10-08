@@ -192,7 +192,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
       						<th scope="col">Last</th>
 							<th scope="col">Phone</th>
 							<th scope="col">Email</th>
-							<th scope="col">Options</th>
+							<th scope="col">OptionsZ</th>
     					</tr>
   				</thead>
   				<tbody class="table-custom">
