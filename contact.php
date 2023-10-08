@@ -204,7 +204,7 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 							<td id="gridEmail1"></td>
 							<td>
 								<div class="dropdown">
-									<input type="image" src="gear.png" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false" ></input>
+									<input type="image" src="gear.png" style="background-color: #D48166;" class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false" ></input>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 										<li><button class="dropdown-item" type="button" id="gridEdit1" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editPress(this,1)">Edit</button></li>
 										<li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deletePress(this,1)">Delete</button></li>
@@ -453,12 +453,12 @@ $clientID = (isset($_SESSION['id']))?$_SESSION['id']:'';
 					<tr>
 						<td colspan="3">
 							<div class="col text-start">
-                                				<button class="btn btn-primary" id="prevPage">Previous Page</button>
+                                				<button class="btn btn-primary" style="background-color: #E6E2DD; color: #D48166;" id="prevPage">Previous Page</button>
 				                        </div>
 						</td>
 						<td colspan="2">                       
 							 <div class="col text-end">
-                                				<button class="btn btn-primary" id="nextPage">Next Page</button>
+                                				<button class="btn btn-primary" style="background-color: #E6E2DD; color: #D48166;" id="nextPage">Next Page</button>
                         				</div>
 						</td>
 					<td>
